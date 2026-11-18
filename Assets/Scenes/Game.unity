@@ -1531,7 +1531,7 @@ MonoBehaviour:
   minAimDistance: 2
   aimMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 4294967295
   fpsCam: {fileID: 330585545}
   muzzlePrefab: {fileID: 5964926015556990157, guid: ffc81ee0a498559449888baf8451558f,
     type: 3}
