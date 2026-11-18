@@ -22,6 +22,16 @@ public class Enemy : MonoBehaviour
     private const string isAttacking = "isShooting";
 
 
+    private void Start()
+    {
+        // Prefabs can't reference the scene's Player, so find it when spawned/placed without one
+        if (player == null)
+        {
+            PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+            if (playerMovement != null) player = playerMovement.transform;
+        }
+    }
+
     private void Update()
     {
 
