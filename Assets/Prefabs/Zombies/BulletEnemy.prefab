@@ -4983,7 +4983,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -5006,6 +5006,7 @@ MonoBehaviour:
   rb: {fileID: 7593398557835964599}
   speed: 50
   lifeTime: 5
+  damage: 10
   impactEffectPrefab: {fileID: 1370874438154576190, guid: c02083b1627cc40449e4e7c3ed1f2a65,
     type: 3}
 --- !u!54 &7593398557835964599

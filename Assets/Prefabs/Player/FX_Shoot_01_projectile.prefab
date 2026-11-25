@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4601982070073949017}
   - component: {fileID: 6561028831805246403}
   - component: {fileID: 7593398557835964599}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FX_Shoot_01_projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
