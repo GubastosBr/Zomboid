@@ -28,6 +28,10 @@ public class GunClass : MonoBehaviour
     [SerializeField] private Camera fpsCam;
     [SerializeField] private GameObject muzzlePrefab;
 
+    [SerializeField] private AudioClip bulletSound;
+    [SerializeField] private float bulletSoundVolume;
+    [SerializeField] private Vector2 shootPitch;
+
 
 
 
@@ -64,6 +68,7 @@ public class GunClass : MonoBehaviour
     private IEnumerator Reload()
     {
         isRealoding = true;
+        ammoText.SetText("Reloading...");
         yield return new WaitForSeconds(reloadTime);
 
         bulletsLeft = bulletsInMagazine;
@@ -74,13 +79,16 @@ public class GunClass : MonoBehaviour
 
     private bool CanShoot()
     {
-        return bulletsLeft > 0 && Time.time >= nextShootTime;
+        return bulletsLeft > 0 && Time.time >= nextShootTime && !isRealoding;
     }
 
     private void Shoot()
     {
         Instantiate(muzzlePrefab, bulletPoint.position, bulletPoint.rotation);
         Instantiate(bulletPrefab, bulletPoint.position, GetAimRotation());
+
+        float pitch = Random.Range(shootPitch.x, shootPitch.y);
+        AudioManager.Instance.PlaySFX(bulletSound, bulletSoundVolume, pitch);
 
         bulletsLeft--;
         nextShootTime = Time.time + timeBetweenShots;

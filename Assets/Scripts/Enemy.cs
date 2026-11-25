@@ -17,6 +17,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackRange = 10f;
     [SerializeField] private float timeBetweenAttacks = 1f;
 
+    [SerializeField] private AudioClip bulletSound;
+    [SerializeField] private float bulletSoundVolume;
+    [SerializeField] private Vector2 shootPitch;
+
     private float nextShootTime;
     private const string isChassing = "isChasing";
     private const string isAttacking = "isShooting";
@@ -70,7 +74,12 @@ public class Enemy : MonoBehaviour
 
         if (Time.time >= nextShootTime)
         {
-            Instantiate(bullet, firePoint.position, firePoint.rotation);
+            Vector3 Direction = (player.position - firePoint.position).normalized;
+            Instantiate(bullet, firePoint.position, Quaternion.LookRotation ( Direction));
+
+            float pitch = Random.Range(shootPitch.x, shootPitch.y);
+            AudioManager.Instance.PlaySFX(bulletSound, bulletSoundVolume, pitch);
+
             nextShootTime = Time.time + timeBetweenAttacks;
         }
     }
